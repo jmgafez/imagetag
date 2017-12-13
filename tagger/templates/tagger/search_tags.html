@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% if tags %}
+		<h1>Etiquetas</h1>
+		<ul>
+		{% for tag in tags %}
+			<li><a href="{% url 'show_tag' tag.id %}" class="label label-primary">{{tag.name}}</a></li>
+		{% endfor %}	
+		</ul>
+	{% else %}
+		La etiqueta que buscas no existe. Por favor introduce una nueva etiqueta en el buscador.
+	{% endif %}
+{% endblock content %}

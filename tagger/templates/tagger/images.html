@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="panel panel-default">
+  		<div class="panel-heading">Imágenes</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Imagen</th>
+					<th>Etiquetas</th>
+					<th>Usuario</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for image in images %}
+					<tr>
+						<td>
+							<a href="{% url 'show_image' image.id %}" class="thumbnail">
+      							<img src="{{image.image.url}}"/>
+    						</a>
+    					</td>
+						<td>
+							{% for tag in image.tags.all %}
+								<a href="{% url 'show_tag' tag.id %}" class="label label-primary">{{tag.name}}</a>
+							{% endfor %}
+						</td>
+						<td>
+							{{image.user.username}}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Imagen</h1>
+	<img src="{{image_t.image.url}}"/>
+	<h2>Etiquetas</h2>
+	{% if image_t.tags %}
+		<ul>
+		{% for tag in image_t.tags.all %}
+			<li><a href="{% url 'show_tag' tag.id %}" class="label label-primary">{{tag.name}}</a></li>
+		{% endfor %}	
+		</ul>
+	{% endif %}
+	
+{% endblock content %}

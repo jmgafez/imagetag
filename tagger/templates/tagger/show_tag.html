@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Etiqueta</h1>
+	<span class="label label-primary">{{tag.name}}</span>
+	<h2>Imágenes</h2>
+	{% for image in tag.images.all %}
+		<a href="{% url 'show_image' image.id %}" class="thumbnail">
+      		<img src="{{image.image.url}}"/>
+    	</a>
+	{% endfor %}
+{% endblock content %}
